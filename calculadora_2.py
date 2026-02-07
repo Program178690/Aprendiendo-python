@@ -36,7 +36,7 @@ elif operacion=="/":
 else:
      print("La operacion ingresada no es valida")
 
-print("Gracias por usar la calculadora")
+print("Gracias por  usar nuestra calculadora")
 
 
 
