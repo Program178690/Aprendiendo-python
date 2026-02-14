@@ -7,7 +7,7 @@ print(f"DEBUG valor: [{numero}]")
 print(f"DEBUG len: {len(numero)}")
 
 # Bug: se compara string con entero
-if numero == 10:
+if  int(numero) == 10:
     print("¡Correcto!")
 else:
     print("Incorrecto")
