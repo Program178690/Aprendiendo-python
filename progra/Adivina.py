@@ -2,10 +2,10 @@ import random
 
 numero_secreto = random.randint(1, 100)
 intentos = 0
-max_intentos = 10
 
 
-while intentos < max_intentos:
+
+while True:
     numero_adivinado = int(input("Adivina un número (1-100): "))
     intentos += 1
     
