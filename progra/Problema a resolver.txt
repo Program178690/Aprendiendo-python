@@ -1,0 +1,12 @@
+Problema a resolver
+Pedir 2 números
+elegir que operación realizar: suma, resta, multi, div
+que realice la operación 
+Que muestre los resultados con formato claro 
+
+Función es un fragmento de código que podemos reutilizar
+
+
+if:
+elif:
+else:

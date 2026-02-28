@@ -1,0 +1,30 @@
+def calcular_imc():
+    try:
+        altura = float(input("Ingresa tu altura en metros: "))
+        peso = float(input("Ingresa tu peso en kg: "))
+        
+        if altura <= 0 or peso <= 0:
+            print("La altura y el peso deben ser valores positivos.")
+            return
+        
+        imc = peso / (altura ** 2)
+        imc_redondeado = round(imc, 1)
+        
+        if imc < 18.5:
+            categoria = "Bajo peso"
+        elif 18.5 <= imc < 25:
+            categoria = "Peso normal"
+        elif 25 <= imc < 30:
+            categoria = "Sobrepeso"
+        else:
+            categoria = "Obesidad"
+        
+        print(f"Tu Índice de Masa Corporal (IMC) es: {imc_redondeado}")
+        print(f"Clasificación: {categoria}")
+    
+    except ValueError:
+        print("Por favor, ingresa valores numéricos válidos.")
+
+if __name__ == "__main__":
+    calcular_imc()</content>
+<parameter name="filePath">c:\Users\hp\Desktop\programación\Parcial_1
