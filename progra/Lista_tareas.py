@@ -1,57 +1,44 @@
-import json
-
-try:
-    with open("tareas.json", "r") as f:
-        tareas = json.load(f)
-except FileNotFoundError:
-    tareas = []
+tareas = []
 
 while True:
-    print("\n=== Lista de tareas")
-    print("1. Agregar tareas ")
-    print("2. Ver tareas ")
-    print("3. Eliminar tareas ")
-    print("4. Marcar como completada ")
-    print("5. Salir ")
+    print('\n--- Lista de Tareas ---')
+    print('1. Agregar tarea')
+    print('2. Ver tareas')
+    print('3. Eliminar tarea')
+    print('4. Marcar/Desmarcar tarea')
+    print('5. Salir')
 
-    opcion = input("Seleccione una opción: ")
+    opcion = input('Opción: ')
+
     if opcion == "1":
-        tarea = input("Nueva tarea: ")
-        tareas.append({"task": tarea, "completed": False})
-        print("Tarea agregada")
+        tarea = input('Nueva tarea: ')
+        tareas.append({"nombre": tarea, "completada": False})
+        print("✅ Agregada")
+
     elif opcion == "2":
         if not tareas:
             print("No hay tareas.")
         else:
             for i, t in enumerate(tareas, 1):
-                status = "[X]" if t["completed"] else "[ ]"
-                print(f"{i}. {status} {t['task']}")
-    elif opcion == "3":
-        if not tareas:
-            print("No hay tareas para eliminar.")
-        else:
-            idx = int(input("Número de tarea a eliminar: "))
-            if 1 <= idx <= len(tareas):
-                tareas.pop(idx - 1)
-                print("Tarea eliminada")
-            else:
-                print("Número inválido.")
-    elif opcion == "5":
-        if not tareas:
-            print("No hay tareas para marcar.")
-        else:
-            idx = int(input("Número de tarea a marcar como completada: "))
-            if 1 <= idx <= len(tareas):
-                tareas[idx - 1]["completed"] = True
-                print("Tarea marcada como completada")
-            else:
-                print("Número inválido.")
-    elif opcion == "5":
-        with open("tareas.json", "w") as f:
-            json.dump(tareas, f)
-        print("Tareas guardadas. Saliendo...")
-        break
-    else:
-        print("Opción inválida.")
-        
+                estado = "✔️" if t["completada"] else "❌"
+                print(f'{i}. {t["nombre"]} [{estado}]')
 
+    elif opcion == "3":
+        idx = int(input("# a eliminar: "))
+        if 0 < idx <= len(tareas):
+            tareas.pop(idx - 1)
+            print("🗑️ Eliminada")
+        else:
+            print("Número inválido.")
+
+    elif opcion == "4":
+        idx = int(input("# a marcar/desmarcar: "))
+        if 0 < idx <= len(tareas):
+            tareas[idx - 1]["completada"] = not tareas[idx - 1]["completada"]
+            estado = "completada" if tareas[idx - 1]["completada"] else "pendiente"
+            print(f'🔄 Tarea marcada como {estado}')
+        else:
+            print("Número inválido.")
+
+    elif opcion == "5":
+        break
