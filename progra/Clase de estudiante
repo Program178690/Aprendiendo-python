@@ -1,0 +1,31 @@
+class Estudiante:
+    def __init__(self, nombre, carnet, carrera):
+        self.nombre = nombre
+        self.carnet = carnet
+        self.carrera = carrera
+        self.notas = []  # lista vacía al inicio
+
+    def agregar_nota(self, nota):
+        self.notas.append(nota)
+
+    def promedio(self):
+        if len(self.notas) == 0:
+            return 0
+        return sum(self.notas) / len(self.notas)
+
+    def aprobado(self):
+        return self.promedio() >= 61
+
+
+est = Estudiante("Omar", "2000990", "Ingeniería en Sistemas")
+
+# Agregar notas
+est.agregar_nota(70)
+est.agregar_nota(80)
+est.agregar_nota(50)
+
+# Consultar resultados con nombre
+print("Estudiante:", est.nombre)
+print("carnet:", est.carnet)
+print("Promedio:", est.promedio())       # Promedio: 66.67
+print("¿Aprobado?", est.aprobado())      # True
